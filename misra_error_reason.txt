@@ -1,0 +1,6 @@
+/*we can't ignore this error in misra rules
+
+ERROR :(MISRA-C:2004 19.4/R) C macros shall only expand to a braced initialiser, a constant, a string literal, a parenthesised expression, a type qualifier, a storage class specifier, or a do-while-zero construct
+
+this error because of stdlib.h library for rand() fuction.
+*/

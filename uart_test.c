@@ -7,51 +7,54 @@
 
 #include "PWM.h"
 #include "GPT.h"
-void Cyclic30ms(void)
+
+#define Num_0 (0)
+#define Num_1 (1)
+#define Num_4 (4)
+#define Num_5 (5)
+#define Num_10 (10)
+#define Num_20 (20)
+#define Num_25 (25)
+#define Num_100 (100)
+
+void Cyclic30ms(void);
+void _delay_ms(s32 Delay);
+void sei(void);
+u32 main(void);
+u32 main(void)
 {
-	static u8 TimeoutCounter = 0;
-	TimeoutCounter ++;
-	if(TimeoutCounter == 10)
-	{
-		BLMGR_BluetoothStateMachine();
-		TimeoutCounter = 0;
-		
-		
-	}
-}
-int main(void)
-{
-	int Count= 0;
-	int start = 0;
-	int Count2 = 0;
+    s32 Count= 0;
+    s32 start = 0;
+    s32 Count2 = 0;
  
 
 
-GPT_Timer30msInit(Cyclic30ms);
+GPT_Timer30msInit(&Cyclic30ms);
 	
 	BLMGR_BluetoothInit();
-	BLMGR_SetReceiver(ROLE_MAPP);
+	BLMGR_SetReceiver((u8)ROLE_MAPP);
     
 							
 	PWM_Init();
 	sei();
-	PWM_SetSpeed(25);
+	PWM_SetSpeed((u8)Num_25);
 
 	
 	while(1)
 	{
-		Count2 = (Count2 +1) %20;
-		BLMGR_SetBattLevel(Count2 / 4);
+		Count2 = (Count2 +(s32)Num_1) %Num_20;
+		/*count is s32 but i cast it to u8*/
+		BLMGR_SetBattLevel(((u8)Count2 /(u8) Num_4));
 		
-		_delay_ms(100);
+		_delay_ms((s32)Num_100);
 		Count ++;
-		if(start == 0)
+		if(start == Num_0)
 		{
-					if(Count > 5)
+					if(Count > Num_5)
 					{
 						BLMGR_StartDevice();
 
-						start = 1;
+						start = Num_5;
 					}
 					
 		}
@@ -62,4 +65,16 @@ GPT_Timer30msInit(Cyclic30ms);
 	}
 	
 	
+}
+void Cyclic30ms(void)
+{
+    static u8 TimeoutCounter = Num_0;
+    TimeoutCounter ++;
+    if(TimeoutCounter == (u8)Num_10)
+    {
+        BLMGR_BluetoothStateMachine();
+        TimeoutCounter = (u8)Num_0;
+
+
+    }
 }
