@@ -23,9 +23,9 @@ void sei(void);
 u32 main(void);
 u32 main(void)
 {
-    s32 Count= 0u;
-    s32 start = 0u;
-    s32 Count2 = 0u;
+    s32 Count= 0;
+    s32 start = 0;
+    s32 Count2 = 0;
  
 
 

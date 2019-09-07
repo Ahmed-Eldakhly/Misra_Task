@@ -48,6 +48,14 @@ Type Range: 0 .. 4294967295
 typedef unsigned long int u32;
 
 /*
+Type name: s32
+Type Description: signed long int type
+Type Range: 0 .. 4294967295
+*/
+
+typedef signed long int s32;
+
+/*
 Type name: BasicRet
 Type Description: Basic Return type
 Type Range: OK,NOK
