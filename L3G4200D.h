@@ -32,4 +32,5 @@ void GYHD_SleepModule(void);
 u8 GYHD_ReadXDirection(u16* pu16Data,u8* pu8ReadingStatus);
 u8 GYHD_ReadYDirection(u16* pu16Data,u8* pu8ReadingStatus);
 u8 GYHD_ReadZDirection(u16* pu16Data,u8* pu8ReadingStatus);
-#endif /* L3G4200D_H_ */
+#endif
+/* L3G4200D_H_ */
