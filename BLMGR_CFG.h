@@ -13,11 +13,12 @@
 typedef struct  
 {
 	u8 Portname;
-	u8 PortMask;
+	/*Port_mask was PortMask*/
+	u8 Port_Mask;
 }BLMGR_DioPinConfig;
 
-#define BLOUETOOTH_ON 0xff
-#define BUZEER_ON     0xff
+#define BLOUETOOTH_ON (0xffu)
+#define BUZEER_ON     (0xffu)
 
  extern BLMGR_DioPinConfig BuzzerConfig;
  extern BLMGR_DioPinConfig BlueToothPwrConfig;
